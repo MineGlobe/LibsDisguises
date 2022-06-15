@@ -77,7 +77,7 @@ public class MineSkinAPI {
             return;
         }
 
-        LibsDisguises.getInstance().getLogger().info("[MineSkinAPI] " + message);
+        DisguiseUtilities.getLogger().info("[MineSkinAPI] " + message);
     }
 
     private MineSkinResponse doPost(SkinUtils.SkinCallback callback, String path, String skinUrl, File file, SkinUtils.ModelType modelType) {

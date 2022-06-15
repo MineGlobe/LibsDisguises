@@ -266,7 +266,7 @@ public class Metrics {
                 } catch (Exception e) {
                     // Something went wrong! :(
                     if (logFailedRequests) {
-                        plugin.getLogger().log(Level.WARNING, "Could not submit plugin stats of " + plugin.getName(), e);
+                        DisguiseUtilities.getLogger().log(Level.WARNING, "Could not submit plugin stats of " + plugin.getName(), e);
                     }
                 }
             }

@@ -2,6 +2,7 @@ package me.libraryaddict.disguise.utilities.plugin;
 
 import me.libraryaddict.disguise.DisguiseConfig;
 import me.libraryaddict.disguise.LibsDisguises;
+import me.libraryaddict.disguise.utilities.DisguiseUtilities;
 import org.bukkit.Bukkit;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class BisectHosting {
 
         if (!hostedBy && !DisguiseConfig.getSavedServerIp().equals("")) {
             // Just a small message for those who tried to enable it
-            LibsDisguises.getInstance().getLogger().severe("Check for BisectHosting failed! Connection error?");
+            DisguiseUtilities.getLogger().severe("Check for BisectHosting failed! Connection error?");
         }
 
         return hostedBy;

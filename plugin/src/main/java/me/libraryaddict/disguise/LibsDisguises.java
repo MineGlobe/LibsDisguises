@@ -55,7 +55,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LibsDisguises extends JavaPlugin {
-    private static LibsDisguises instance;
+
+    @Getter private static LibsDisguises instance;
     private DisguiseListener listener;
     private String buildNumber;
     @Getter
@@ -68,13 +69,12 @@ public class LibsDisguises extends JavaPlugin {
 
     @Override
     public void onLoad() {
+        instance = this;
         try {
-            if (instance != null || !Bukkit.getServer().getWorlds().isEmpty() || !Bukkit.getOnlinePlayers().isEmpty()) {
+            if (!Bukkit.getServer().getWorlds().isEmpty() || !Bukkit.getOnlinePlayers().isEmpty()) {
                 reloaded = true;
                 getLogger().severe("Server was reloaded! Please do not report any bugs! This plugin can't handle " + "reloads gracefully!");
             }
-
-            instance = this;
 
             Plugin plugin = Bukkit.getPluginManager().getPlugin("ProtocolLib");
 
@@ -129,6 +129,7 @@ public class LibsDisguises extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        instance = this;
         try {
             if (reloaded) {
                 getLogger().severe("Server was reloaded! Please do not report any bugs! This plugin can't handle " + "reloads gracefully!");
@@ -383,12 +384,4 @@ public class LibsDisguises extends JavaPlugin {
         return listener;
     }
 
-    /**
-     * External APIs shouldn't actually need this instance. DisguiseAPI should be enough to handle most cases.
-     *
-     * @return The instance of this plugin
-     */
-    public static LibsDisguises getInstance() {
-        return instance;
-    }
 }
